@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<!--<div id="googleMap" style="width:100%;height:200px;"></div> -->
+
+<head>
+    <title>JSSample</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+<!--
+
+<script>
+function myMap() {
+var mapProp= {
+  center:new google.maps.LatLng(43.156578, -77.608849),
+  zoom:10,
+};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaUQTpWqmHA9Y3E3L5R8P7f_ceFQdFdGI&callback=myMap"></script>
+-->
+
+
+<body>
+<ul style="list-style-type:square;">
+<li><p id="demo"></p></li>
+<li><p id="demo2"></p></li>
+<li><p id="demo3"></p></li>
+</ul>
+<script>
+var i=484208;
+var protien = ["22889", "25192", "11902", "11903", "4537", "10129"];
+var veggies = ["587589", "587541", "369012", "671414", "601095", "147173"];
+var fruits = ["5127","18989", "35213", "47381", "92686", "613361"];
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://api.wegmans.io/products/"+i+"?api-version=2018-10-18&subscription-key=b2648422811140049cd41683d3cd0834",
+  "method": "GET",
+  "headers": {
+    "cache-control": "no-cache",
+    "Postman-Token": "de4bc5e7-cf20-497a-aca9-3c11b78bdc7a"
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+  var cars = response.nutrients[1].type;
+  var cars2 = response.nutrients[1].quantity;
+  var x1 = parseInt(cars2,10)
+		document.getElementById("demo").innerHTML = cars;
+		document.getElementById("demo2").innerHTML = x1;
+		
+  
+});
+//////////////////////
+
+var I;
+var settings2 = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://api.wegmans.io/products/484208/prices/68?api-version=2018-10-18&subscription-key=b2648422811140049cd41683d3cd0834",
+  "method": "GET",
+  "headers": {
+    "cache-control": "no-cache",
+    "Postman-Token": "de4bc5e7-cf20-497a-aca9-3c11b78bdc7a"
+  }
+}
+
+$.ajax(settings2).done(function (response2) {
+  console.log(response2);
+  var cars3 = response2.price;
+  //var cars4 = response.nutrients[1].quantity;
+  //var x2 = parseInt(cars2,10)
+		document.getElementById("demo3").innerHTML = cars3;
+		//document.getElementById("demo2").innerHTML = x1;
+		
+  
+});
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://api.wegmans.io/products/categories/715?api-version=2018-10-18&subscription-key=b2648422811140049cd41683d3cd0834",
+  "method": "GET",
+  "headers": {
+    "cache-control": "no-cache",
+    "Postman-Token": "2857c518-4e34-40c6-88f7-8416f26653c7"
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+</script>
+<!--
+<script>
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://api.wegmans.io/meals/recipes?api-version=2018-10-18&Subscription-Key=b2648422811140049cd41683d3cd0834",
+  "method": "GET",
+  "headers": {
+    "cache-control": "no-cache",
+    "Postman-Token": "c2178bdf-dffc-48d3-9803-ad23e0eea74b"
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+  JSON.stringify(response);
+ var i;
+ for(i=0; i<=1915; i++){
+	if(response.recipes[i].name == null)
+		break;
+	else{
+		var cars = response.recipes[i].name;
+		document.getElementById("demo").innerHTML = cars;
+		}
+  }
+});
+
+</script>
+-->
+</body>
+</html>
+
